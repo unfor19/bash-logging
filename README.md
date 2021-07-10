@@ -68,9 +68,9 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash ./entrypoint.sh
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 54%
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 54%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -78,9 +78,9 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash ./entrypoint.sh /
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 54%
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 54%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -88,9 +88,9 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash ./entrypoint.sh / 80
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 54%
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is lower than the warning threshold of 80%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 54%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is lower than the warning threshold of 80%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -98,9 +98,9 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash ./entrypoint.sh / 75 92
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 92%
-[WRN] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 92%
+[WRN] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -108,9 +108,9 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash entrypoint.sh   
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 54%
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 54%
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is lower than the warning threshold of 85%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -126,12 +126,12 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash entrypoint.sh / 75 92
 [LOG] Output:
 
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Getting disk usage ...
-[DBG] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Finished getting disk usage 92 with the given path /
-[DBG] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Warning threshold is 75
-[INF] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage for the path "/" is 92%
-[WRN] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
-[DBG] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Successfully completed disk usage process
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Getting disk usage ...
+[DBG] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Finished getting disk usage 92 with the given path /
+[DBG] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Warning threshold is 75
+[INF] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage for the path "/" is 92%
+[WRN] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
+[DBG] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Successfully completed disk usage process
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -139,7 +139,7 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash entrypoint.sh / 75 92
 [LOG] Output:
 
-[WRN] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
+[WRN] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: Disk usage is higher than the warning threshold of 75%
 
 [LOG] Test passed as expected
 -------------------------------------------------------
@@ -147,7 +147,7 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 [LOG] Executing: bash entrypoint.sh / 75 92
 [LOG] Output:
 
-[ERR] 1625935095 Sat Jul 10 16:38:15 UTC 2021 :: [EXIT_CODE=3] The variable LOGGING_LEVEL "WILLY" does not exist in INF OFF WRN DBG
+[ERR] 1625935160 Sat Jul 10 16:39:20 UTC 2021 :: [EXIT_CODE=3] The variable LOGGING_LEVEL "WILLY" does not exist in INF OFF WRN DBG
 
 [LOG] Test failed as expected
 ```
