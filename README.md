@@ -1,6 +1,6 @@
 # bash-logging
 
-[![Publish Latest](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml/badge.svg)](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml)
+[![Publish Latest](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml/badge.svg)](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml) [![Dockerhub pulls](https://img.shields.io/docker/pulls/unfor19/bash-logging)](https://hub.docker.com/r/unfor19/bash-logging)
 
 ## Usage
 
