@@ -117,6 +117,11 @@ $(date +%s) - DDD MMM DD HH:MM:SS TZ YYYY
 $(date)     - 1234567890 unix timestamp
 ```
 
+## References
+
+1. [Simple logging levels in Bash](https://stackoverflow.com/a/48087251/5285732)
+2. [Create timestamp variable in bash script](https://stackoverflow.com/questions/17066250/create-timestamp-variable-in-bash-script)
+
 ## Authors
 
 Created and maintained by [Meir Gabay](https://github.com/unfor19)
