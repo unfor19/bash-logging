@@ -80,9 +80,9 @@ main(){
 
     # Check warning threshold
     if [[ "$disk_usage" -le "$warning_threshold" ]]; then
-        log_msg "Disk usage is lower than the warning threshold ${warning_threshold}%" "INF"
+        log_msg "Disk usage is lower than the warning threshold of ${warning_threshold}%" "INF"
     elif [[ "$disk_usage" -le 100 ]]; then
-        log_msg "Disk usage is higher than the warning threshold ${warning_threshold}%" "WRN"
+        log_msg "Disk usage is higher than the warning threshold of ${warning_threshold}%" "WRN"
     else
         err_msg "Unknown this usage - ${disk_usage}" "4"
     fi
