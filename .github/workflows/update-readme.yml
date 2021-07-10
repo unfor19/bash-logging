@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Prepare tests.sh output
         run: |
-          echo -e "\`\`\`\n$(tail -n +3 "logging.sh")\n\`\`\`" > "loggingsh.md"
+          echo -e "\`\`\`\n$(tail -n +3 logging.sh)\n\`\`\`" > "loggingsh.md"
       - uses: unfor19/replacer-action@master
         name: Update README.md file
         with:
