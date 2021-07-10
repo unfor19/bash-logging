@@ -18,7 +18,7 @@ err_msg(){
 is_array_contains(){
   declare -a array=("$1")
   local string="$2"
-  if [[ " ${array[*]} " =~ " $string " ]]; then
+  if [[ " ${array[*]} " =~ \ $string\ .* ]]; then
     echo "true"
   fi
 
