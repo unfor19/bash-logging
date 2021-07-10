@@ -20,8 +20,8 @@ jobs:
       - uses: unfor19/replacer-action@master
         name: Update README.md file
         with:
-          src-file-path: "{{ fromJSON(env.SRC_FILE_PATH) }}"
-          dst-file-path: "{{ fromJSON(env.DST_FILE_PATH) }}"
+          src-file-path: "${{ fromJSON(env.SRC_FILE_PATH) }}"
+          dst-file-path: "${{ fromJSON(env.DST_FILE_PATH) }}"
           start-value: "<!-- loggingsh_start -->"
           end-value: "<!-- loggingsh_end -->"
           git-user-name: "GitHub Actions"
