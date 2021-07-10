@@ -58,7 +58,7 @@ I've create a sample application that makes it easier to understand the logging 
 
 Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/master/tests.sh)
 
-<details><summary>**Expand/Collpase**</summary>
+<details><summary>Expand/Collpase</summary>
 
 <!-- replacer_start_tests -->
 
