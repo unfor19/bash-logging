@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build and push
         run: |
-          export DOCKER_TAG="unfor19/bash-logging:latest"
+          export DOCKER_TAG="unfor19/bash-logging:example"
           docker build . --file Dockerfile.example --tag "${DOCKER_TAG}"
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push "${DOCKER_TAG}"
