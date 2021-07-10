@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Prepare tests.sh output
         run: |
-          usage_file_path=.testresults.log
           test_results="$(source tests.sh)"
-          echo -e "\`\`\`\n${test_results}\n\`\`\`" > "${usage_file_path}"
+          echo "${test_results}"
+          echo -e "\`\`\`\n${test_results}\n\`\`\`" > ".testresults.log"
       - uses: unfor19/replacer-action@master
         name: Update README.md file with test results
         with:
