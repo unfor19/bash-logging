@@ -5,7 +5,7 @@ on:
     paths-ignore:
       - "README.md"
 
-# Trigger
+# Trigger1
 
 jobs:
   update-readme:
