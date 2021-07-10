@@ -5,6 +5,10 @@ on:
     paths-ignore:
       - "README.md"
 
+env:
+  SRC_FILE_PATH: "loggingsh.md"
+  DST_FILE_PATH: "README.md"
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -12,12 +16,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Prepare tests.sh output
         run: |
-          tail -n +3 "logging.sh" > logging.txt
+          echo -e "\`\`\`\n$(tail -n +3 "$SRC_FILE_PATH")\n\`\`\`" > "${SRC_FILE_PATH}"
       - uses: unfor19/replacer-action@master
         name: Update README.md file
         with:
-          src-file-path: "logging.txt"
-          dst-file-path: "README.md"
+          src-file-path: "{{ fromJSON(env.SRC_FILE_PATH) }}"
+          dst-file-path: "{{ fromJSON(env.DST_FILE_PATH) }}"
           start-value: "<!-- loggingsh_start -->"
           end-value: "<!-- loggingsh_end -->"
           git-user-name: "GitHub Actions"
