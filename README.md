@@ -19,7 +19,7 @@
 
 
 <summary>
-Contents of [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) - Expand/Collapse
+Contents of **logging.sh** - Expand/Collapse
 </summary>
 
 <!-- loggingsh_start -->
