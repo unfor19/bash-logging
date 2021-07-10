@@ -1,0 +1,25 @@
+name: pipeline
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Lint with shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          path: "."
+          pattern: "*.sh"
+          exclude: "./.git/*"
+      - name: Test with bash script
+        run: |
+          bash tests.sh
