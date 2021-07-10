@@ -3,64 +3,84 @@
 
 ## Usage
 
-1. Copy the following snippet to the top of your Bash script, see [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh#L8-L51)
+1. Copy the following snippet to the top of your Bash script, see [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh)
 
-   ```bash
-   ### Logging Helpers -----------------------------------------------------------------
-   ## Enumerated log levels
-   declare -A _LOGGING_LEVELS=([DBG]=0 [INF]=1 [WRN]=2 [OFF]=3)
-   _LOGGING_LEVEL="${LOGGING_LEVEL:-"INF"}"
-
-
-   # Functions
-   err_msg(){
-   local msg="$1"
-   local exit_code="${2:-"1"}"
-   echo -e "[ERR] $(date +%s) $(date) :: [EXIT_CODE=$exit_code] $msg"
-   exit "$exit_code"
-   }
+```bash
+### Logging Helpers -----------------------------------------------------------------
+## Enumerated log levels
+declare -A _LOGGING_LEVELS=([DBG]=0 [INF]=1 [WRN]=2 [OFF]=3)
+_LOGGING_LEVEL="${LOGGING_LEVEL:-"INF"}"
 
 
-   is_array_contains(){
-      declare -a array=("$1")
-      local string="$2"
-      if [[ " ${array[*]} " =~ " $string " ]]; then
-         echo "true"
-      fi
-
-      echo "false"
-   }
+# Functions
+err_msg(){
+  local msg="$1"
+  local exit_code="${2:-"1"}"
+  echo -e "[ERR] $(date +%s) $(date) :: [EXIT_CODE=$exit_code] $msg"
+  exit "$exit_code"
+}
 
 
-   log_msg(){
-   local msg="$1"
-   local level="$2"
+is_array_contains(){
+  declare -a array=("$1")
+  local string="$2"
+  if [[ " ${array[*]} " =~ " $string " ]]; then
+    echo "true"
+  fi
 
-   # Validate logging levels
-   if [[ "$(is_array_contains "${!_LOGGING_LEVELS[*]}" "$level")" = "false" ]]; then
-      err_msg "The argument \"${level}\" does not exist in ${!_LOGGING_LEVELS[*]}" "2"
-   fi
+  echo "false"
+}
 
-   if [[ "$(is_array_contains "${!_LOGGING_LEVELS[*]}" "$_LOGGING_LEVEL")" = "false" ]]; then
-      err_msg "The variable LOGGING_LEVEL \"${_LOGGING_LEVEL}\" does not exist in ${!_LOGGING_LEVELS[*]}" "3"
-   fi
 
-   # Check whether to print log msg or not
-   if [[ ${_LOGGING_LEVELS[$level]} -ge ${_LOGGING_LEVELS[$_LOGGING_LEVEL]} ]]; then
-      echo -e "[${level}] $(date +%s) $(date) :: $msg"
-   fi
-   }
-   ```
+log_msg(){
+  local msg="$1"
+  local level="${2:-"INF"}"
 
-1. Set the `_LOGGING_LEVELS` according to your needs, currently there are four (4) levels, see [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh#L10)
+  # Validate logging levels
+  if [[ "$(is_array_contains "${!_LOGGING_LEVELS[*]}" "$level")" = "false" ]]; then
+    err_msg "The argument \"${level}\" does not exist in ${!_LOGGING_LEVELS[*]}" "2"
+  fi
+
+  if [[ "$(is_array_contains "${!_LOGGING_LEVELS[*]}" "$_LOGGING_LEVEL")" = "false" ]]; then
+    err_msg "The variable LOGGING_LEVEL \"${_LOGGING_LEVEL}\" does not exist in ${!_LOGGING_LEVELS[*]}" "3"
+  fi
+
+  # Check whether to print log msg or not
+  if [[ ${_LOGGING_LEVELS[$level]} -ge ${_LOGGING_LEVELS[$_LOGGING_LEVEL]} ]]; then
+    echo -e "[${level}] $(date +%s) $(date) :: $msg"
+  fi
+}
+```
+
+2. Set the `_LOGGING_LEVELS` according to your needs, currently there are four (4) levels, see [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh#L10)
    1. `DBG=0` - Logs verbose usage messages, useful for debugging the script
    2. `INF=1` - Logs application messages
    3. `WRN=2` - Logs warning messages
    4. `OFF=3` - No logs at all
 
-1. Use the functions `log_msg` and `err_msg` in your code, the [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh#L54-L112) file contains a full example of an application that logs the current disk usage.
+3. Use the functions `log_msg` and `err_msg` in your code, the [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) file contains a full example of an application that logs the current disk usage.
+   - `log_msg $MSG $LOGGING_LEVEL=INF`
+   - `err_msg $MSG $EXIT_CODE=1`
+
+
+### Optional - Import logging.sh
+
+Instead of adding the code, create a new file and name it [logging.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) and import it in your script
+
+1. Download the `logging.sh` script
+    ```bash
+    TARGET_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/logging.sh" && \
+    wget -O logging.sh "$TARGET_URL" && \
+    chmod +x ./logging.sh
+    ```
+1. Import the `logging.sh` file in your script
+   ```bash
+   source logging.sh
+   ```
 
 ## Examples
+
+I've create a sample application that makes it easier to understand the logging mechanism.
 
 1. Download the `entrypoint.sh` script
     ```bash
@@ -80,9 +100,9 @@
 
    ```bash
    # Output
-   [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Getting disk usage ...
-   [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Disk usage for the path "/" is 6%
-   [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Disk usage is lower than the warning threshold 85%
+   [INF] 1625928547 Sat Jul 10 17:49:07 IDT 2021 :: Getting disk usage ...
+   [INF] 1625928547 Sat Jul 10 17:49:07 IDT 2021 :: Disk usage for the path "/" is 6%
+   [INF] 1625928547 Sat Jul 10 17:49:07 IDT 2021 :: Disk usage is lower than the warning threshold of 85%
    ```
 
 1. Mocking disk size to check warning message
@@ -92,9 +112,9 @@
 
    ```bash
    # Output
-   [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Getting disk usage ...
-   [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage for the path "/" is 92%
-   [WRN] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage is higher than the warning threshold of 75%   
+   [INF] 1625928557 Sat Jul 10 17:49:17 IDT 2021 :: Getting disk usage ...
+   [INF] 1625928557 Sat Jul 10 17:49:17 IDT 2021 :: Disk usage for the path "/" is 92%
+   [WRN] 1625928557 Sat Jul 10 17:49:17 IDT 2021 :: Disk usage is higher than the warning threshold of 75%
    ```
 1. Debugging
    ```bash
@@ -103,12 +123,12 @@
 
    ```bash
    # Output
-   [INF] 1625876349 Sat Jul 10 09:19:09 IDT 2021 :: Getting disk usage ...
-   [DBG] 1625876349 Sat Jul 10 09:19:09 IDT 2021 :: Finished getting disk usage 92 with the given path /
-   [DBG] 1625876350 Sat Jul 10 09:19:10 IDT 2021 :: Warning threshold is 75
-   [INF] 1625876350 Sat Jul 10 09:19:10 IDT 2021 :: Disk usage for the path "/" is 92%
-   [WRN] 1625876350 Sat Jul 10 09:19:10 IDT 2021 :: Disk usage is higher than the warning threshold 75%
-   [DBG] 1625876350 Sat Jul 10 09:19:10 IDT 2021 :: Successfully completed disk usage process
+   [INF] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Getting disk usage ...
+   [DBG] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Finished getting disk usage 92 with the given path /
+   [DBG] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Warning threshold is 75
+   [INF] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Disk usage for the path "/" is 92%
+   [WRN] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Disk usage is higher than the warning threshold of 75%
+   [DBG] 1625928568 Sat Jul 10 17:49:28 IDT 2021 :: Successfully completed disk usage process
    ```
 1. Check what happens when providing an unknown logging level as an environment variable
    ```bash
@@ -117,7 +137,7 @@
 
    ```bash
    # Output
-   [ERR] 1625876707 Sat Jul 10 09:25:07 IDT 2021 :: [EXIT_CODE=3] The variable LOGGING_LEVEL "WILLY" does not exist in INF OFF WRN DBG
+   [ERR] 1625928579 Sat Jul 10 17:49:39 IDT 2021 :: [EXIT_CODE=3] The variable LOGGING_LEVEL "WILLY" does not exist in INF OFF WRN DBG
    ```
 1. Check what happens when providing an unknown logging level as an argument in the script
    ```bash
@@ -126,10 +146,10 @@
 
    ```bash
    # Output
-   [INF] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: Getting disk usage ...
-   [INF] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: Disk usage for the path "/" is 92%
-   [WRN] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: Disk usage is higher than the warning threshold 75%
-   [ERR] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: [EXIT_CODE=2] The argument "WONKA" does not exist in INF OFF WRN DBG   
+   [INF] 1625928586 Sat Jul 10 17:49:46 IDT 2021 :: Getting disk usage ...
+   [INF] 1625928586 Sat Jul 10 17:49:46 IDT 2021 :: Disk usage for the path "/" is 92%
+   [WRN] 1625928586 Sat Jul 10 17:49:46 IDT 2021 :: Disk usage is higher than the warning threshold of 75%
+   [ERR] 1625928586 Sat Jul 10 17:49:46 IDT 2021 :: [EXIT_CODE=2] The argument "WONKA" does not exist in INF OFF WRN DBG 
    ```
 
 ## Advanced Bash Expressions
