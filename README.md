@@ -3,9 +3,9 @@
 
 ## Usage
 
-1. Download the script
+1. Download the `entrypoint.sh` script
     ```bash
-    TARGET_URL="" && \
+    TARGET_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/entrypoint.sh" && \
     wget -O entrypoint.sh "$TARGET_URL" && \
     chmod +x ./entrypoint.sh
     ```
