@@ -9,7 +9,7 @@
     wget -O entrypoint.sh "$TARGET_URL" && \
     chmod +x ./entrypoint.sh
     ```
-1. Provide arguments or variablse
+1. Provide arguments or variables
     ```bash
     ./entrypoint.sh "$DISK_USAGE_PATH" "$WARNING_THRESHOLD" "$MOCKED_DISK_USAGE"
     ```
@@ -31,7 +31,7 @@
    # Output
    [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Getting disk usage ...
    [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage for the path "/" is 92%
-   [WRN] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage is higher than the warning threshold 75%   
+   [WRN] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage is higher than the warning threshold of 75%   
    ```
 1. Debugging
    ```bash
@@ -90,7 +90,7 @@ percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f
 
 ### Initializing Variables
 
-1. Use first argument $1 as the default value, if empty, use the var $DISK_USAGE_PATH
+1. Use the first argument $1 as the default value; if empty, use the var $DISK_USAGE_PATH
 
    ```bash
    _DISK_USAGE_PATH="${1:-"$DISK_USAGE_PATH"}"
