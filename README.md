@@ -19,7 +19,10 @@
 1. No arguments
    ```bash
    ./entrypoint.sh
+   ```
+
    # Output
+   ```bash
    [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Getting disk usage ...
    [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Disk usage for the path "/" is 6%
    [INF] 1625876204 Sat Jul 10 09:16:44 IDT 2021 :: Disk usage is lower than the warning threshold 85%
@@ -28,6 +31,9 @@
 1. Mocking disk size to check warning message
    ```bash
    ./entrypoint.sh / 75 92
+   ```
+
+   ```bash
    # Output
    [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Getting disk usage ...
    [INF] 1625876306 Sat Jul 10 09:18:26 IDT 2021 :: Disk usage for the path "/" is 92%
@@ -36,6 +42,9 @@
 1. Debugging
    ```bash
    LOGGING_LEVEL="DBG" ./entrypoint.sh / 75 92
+   ```
+
+   ```bash
    # Output
    [INF] 1625876349 Sat Jul 10 09:19:09 IDT 2021 :: Getting disk usage ...
    [DBG] 1625876349 Sat Jul 10 09:19:09 IDT 2021 :: Finished getting disk usage 92 with the given path /
@@ -47,12 +56,18 @@
 1. Check what happens when providing an unknown logging level as an environment variable
    ```bash
    LOGGING_LEVEL="WILLY" ./entrypoint.sh / 75 92
+   ```
+
+   ```bash
    # Output
    [ERR] 1625876707 Sat Jul 10 09:25:07 IDT 2021 :: [EXIT_CODE=3] The variable LOGGING_LEVEL "WILLY" does not exist in INF OFF WRN DBG
    ```
 1. Check what happens when providing an unknown logging level as an argument in the script
    ```bash
    TEST_UNKNOWN_LEVEL="true" ./entrypoint.sh / 75 92
+   ```
+
+   ```bash
    # Output
    [INF] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: Getting disk usage ...
    [INF] 1625876424 Sat Jul 10 09:20:24 IDT 2021 :: Disk usage for the path "/" is 92%
@@ -62,59 +77,78 @@
 
 ## Advanced Bash Expressions
 
-### Associative Array Keys As Array
-
-Keys array of a given associative array
-```bash 
-declare -A ASSOCIATIVE_ARRAY=([FIRST]=1 [SECOND]=2)
-echo ${!ASSOCIATIVE_ARRAY[*]}
-# Output
-FIRST SECOND
-```
-
 This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
 
 ### Piping the data
 
+Using `|` to pipe the data and getting the fifth element of the final line (Milla Jovovich? Bruce Willis?)
 ```bash
-get last line | squash spaces     | split string by " " and get the Fifth Element (Milla Jovovich? Bruce Willis?)
+get last line | squash spaces     | split string by " " and get the Fifth Element 
 tail -1       | tr -s "[:space:]" | cut -d" " -f5
 ```
 
 This expression is used in the code in
 
 ```bash
+path="/" # pseudo code
 usage_msg="$(df -h "$path")"
+echo -e "$usage_msg" # print temporary variable, including line breaks `-e`
 percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)"
+echo "$percentage_msg" # print results
 ```
+
+### Associative Array Keys As Array
+
+Keys array of a given associative array
+```bash 
+declare -A ASSOCIATIVE_ARRAY=([FIRST]=1 [SECOND]=2)
+echo ${!ASSOCIATIVE_ARRAY[*]}
+```
+
+```bash
+# Output
+FIRST SECOND
+```
+
 
 ### Initializing Variables
 
-1. Use the first argument $1 as the default value; if empty, use the var $DISK_USAGE_PATH
+1. Use the first argument `$1` as the default value; if empty, use the var `$DISK_USAGE_PATH`
 
    ```bash
    _DISK_USAGE_PATH="${1:-"$DISK_USAGE_PATH"}"
    ```
 
-1. Check if default value is set, if not, set to "/"
+1. Check if default value is set, if not, set to `/`
    ```bash
    _DISK_USAGE_PATH="${_DISK_USAGE_PATH:-"/"}"
    ```
 
 ### Substring
 
-Replace all "%" instances with ""
+Replace all `%` instances with `""` - The chars `//` after `MY_VAR` stands for "all instances"; when using a single `/` it removes the first instance only
 ```bash
-${MY_VAR//replace_this/with_this} - "//" stands for "all instances", when using "/" it removes the first instance only
+${MY_VAR//replace_this/with_this} - 
 ```
 
-This expression is used in the code in - `"${percentage_msg//%/}"`
+This expression is used in the code in - 
+
+```bash
+percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)" # pseudo code
+percentage="${percentage_msg//%/}"
+echo "$percentage"
+```
+
+```bash
+# Output - varies per machine
+6
+```
 
 ### Datetime
 
 ```bash
-$(date +%s) - DDD MMM DD HH:MM:SS TZ YYYY
-$(date)     - 1234567890 unix timestamp
+$(date +%s) # DDD MMM DD HH:MM:SS TZ YYYY
+$(date)     # 1234567890 unix timestamp
 ```
 
 ## References
