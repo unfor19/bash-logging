@@ -2,6 +2,10 @@
 
 [![Publish Latest](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml/badge.svg)](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml) [![Dockerhub pulls](https://img.shields.io/docker/pulls/unfor19/bash-logging)](https://hub.docker.com/r/unfor19/bash-logging)
 
+A Logging Framework for Bash. This project aims to provide a solution that can be implemented with a single file import `source logging.sh`.
+
+To keep your script as a single file, you can copy paste the contents of [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) to the top your script.
+
 ## Usage
 
 1. Download the [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) script
@@ -168,6 +172,8 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 </details>
 
 ## Advanced Bash Expressions
+
+In the following section you'll documenation about the advanced Bash expressions that I used in this project.
 
 ### Piping the data
 
