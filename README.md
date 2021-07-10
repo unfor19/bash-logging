@@ -159,10 +159,10 @@ This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
 
 Replace all `%` instances with `""` - The chars `//` after `MY_VAR` stands for "all instances"; when using a single `/` it removes the first instance only
 ```bash
-${MY_VAR//replace_this/with_this} - 
+${MY_VAR//replace_this/with_this}
 ```
 
-This expression is used in the code in - 
+This expression is used in the code in
 
 ```bash
 percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)" # pseudo code
