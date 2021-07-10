@@ -12,9 +12,9 @@ jobs:
       - name: Prepare tests.sh output
         run: |
           usage_file_path=.testresults.log
-          test_results=$(source tests.sh)
+          test_results="$(source tests.sh)"
           echo -e "\`\`\`\n${test_results}\n\`\`\`" > "${usage_file_path}"
-      - uses: unfor19/replacer-action@v1.0.2
+      - uses: unfor19/replacer-action@master
         name: Update README.md file with test results
         with:
           src-file-path: ".testresults.log"
