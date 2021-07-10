@@ -25,7 +25,7 @@ Contents of **logging.sh** - Expand/Collapse
 <!-- loggingsh_start -->
 
 ```
-0 0 1 2 3 4 6 10 11 20 26 27tail -n +3 logging.sh)
+$(tail -n +3 logging.sh)
 ```
 
 <!-- loggingsh_end -->
