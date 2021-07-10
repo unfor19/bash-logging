@@ -21,13 +21,13 @@ err_msg(){
 
 
 is_array_contains(){
-    declare -a array=("$1")
-    local string="$2"
-    if [[ " ${array[*]} " =~ " $string " ]]; then
-        echo "true"
-    fi
+  declare -a array=("$1")
+  local string="$2"
+  if [[ " ${array[*]} " =~ " $string " ]]; then
+      echo "true"
+  fi
 
-    echo "false"
+  echo "false"
 }
 
 
@@ -53,47 +53,47 @@ log_msg(){
 
 ### App -----------------------------------------------------------------------------
 get_disk_usage(){
-    local path="${1:-"/"}"
-    local usage_msg=""
-    local percentage_msg=""
-    local percentage=""
-    usage_msg="$(df -h "$path")"
-    percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)"
-    percentage="${percentage_msg//%/}"
-    echo "$percentage"
+  local path="${1:-"/"}"
+  local usage_msg=""
+  local percentage_msg=""
+  local percentage=""
+  usage_msg="$(df -h "$path")"
+  percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)"
+  percentage="${percentage_msg//%/}"
+  echo "$percentage"
 }
 
 
 main(){
-    local path="${1:-"/"}"
-    local warning_threshold="${2:-"85"}"
-    local disk_usage="${3:-""}"
+  local path="${1:-"/"}"
+  local warning_threshold="${2:-"85"}"
+  local disk_usage="${3:-""}"
 
-    # Get disk usage
-    log_msg "Getting disk usage ..." "INF"
-    if [[ -z "$disk_usage" ]]; then
-        disk_usage="$(get_disk_usage "$path")"
-    fi
-    log_msg "Finished getting disk usage $disk_usage with the given path $path" "DBG"
-    log_msg "Warning threshold is $warning_threshold" "DBG"
-    log_msg "Disk usage for the path \"${path}\" is ${disk_usage}%" "INF"
+  # Get disk usage
+  log_msg "Getting disk usage ..." "INF"
+  if [[ -z "$disk_usage" ]]; then
+      disk_usage="$(get_disk_usage "$path")"
+  fi
+  log_msg "Finished getting disk usage $disk_usage with the given path $path" "DBG"
+  log_msg "Warning threshold is $warning_threshold" "DBG"
+  log_msg "Disk usage for the path \"${path}\" is ${disk_usage}%" "INF"
 
-    # Check warning threshold
-    if [[ "$disk_usage" -le "$warning_threshold" ]]; then
-        log_msg "Disk usage is lower than the warning threshold of ${warning_threshold}%" "INF"
-    elif [[ "$disk_usage" -le 100 ]]; then
-        log_msg "Disk usage is higher than the warning threshold of ${warning_threshold}%" "WRN"
-    else
-        err_msg "Unknown this usage - ${disk_usage}" "4"
-    fi
+  # Check warning threshold
+  if [[ "$disk_usage" -le "$warning_threshold" ]]; then
+      log_msg "Disk usage is lower than the warning threshold of ${warning_threshold}%" "INF"
+  elif [[ "$disk_usage" -le 100 ]]; then
+      log_msg "Disk usage is higher than the warning threshold of ${warning_threshold}%" "WRN"
+  else
+      err_msg "Unknown this usage - ${disk_usage}" "4"
+  fi
 
-    log_msg "Successfully completed disk usage process" "DBG"
+  log_msg "Successfully completed disk usage process" "DBG"
 
-    # Tests
-    _TEST_UNKNOWN_LEVEL="${TEST_UNKNOWN_LEVEL:-"false"}"
-    if [[ "$_TEST_UNKNOWN_LEVEL" = "true" ]]; then
-        log_msg "Missing level type" "WONKA"
-    fi
+  # Tests
+  _TEST_UNKNOWN_LEVEL="${TEST_UNKNOWN_LEVEL:-"false"}"
+  if [[ "$_TEST_UNKNOWN_LEVEL" = "true" ]]; then
+      log_msg "Missing level type" "WONKA"
+  fi
 }
 
 # Initialize variables
