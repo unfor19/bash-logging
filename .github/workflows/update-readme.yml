@@ -19,5 +19,5 @@ jobs:
         with:
           src-file-path: ".testresults.log"
           dst-file-path: "README.md"
-          start-value: "<!-- tests_start -->"
-          end-value: "<!-- tests_end -->"
+          start-value: "<!-- replacer_start_tests -->"
+          end-value: "<!-- replacer_end_tests -->"
