@@ -24,7 +24,7 @@ jobs:
         run: |
           bash tests.sh
   push-dockerhub:
-    needs: [test-ubuntu, test-macos, test-wsl]
+    needs: [test-ubuntu]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
