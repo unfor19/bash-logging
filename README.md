@@ -154,8 +154,6 @@ I've create a sample application that makes it easier to understand the logging 
 
 ## Advanced Bash Expressions
 
-This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
-
 ### Piping the data
 
 Using `|` to pipe the data and getting the fifth element of the final line (Milla Jovovich? Bruce Willis?)
@@ -186,6 +184,8 @@ echo ${!ASSOCIATIVE_ARRAY[*]}
 # Output
 FIRST SECOND
 ```
+
+This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
 
 
 ### Initializing Variables
