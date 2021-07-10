@@ -10,10 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Prepare tests.sh output
+        run: |
+          tail -n +3 "logging.sh" > logging.txt
       - uses: unfor19/replacer-action@master
         name: Update README.md file
         with:
-          src-file-path: "logging.sh"
+          src-file-path: "logging.txt"
           dst-file-path: "README.md"
           start-value: "<!-- loggingsh_start -->"
           end-value: "<!-- loggingsh_end -->"
