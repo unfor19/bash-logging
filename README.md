@@ -67,13 +67,13 @@ log_msg(){
 
 Instead of adding the code, create a new file and name it [logging.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) and import it in your script
 
-1. Download the `logging.sh` script
+1. Download the [logging.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) script
     ```bash
     TARGET_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/logging.sh" && \
     wget -O logging.sh "$TARGET_URL" && \
     chmod +x ./logging.sh
     ```
-1. Import the `logging.sh` file in your script
+1. Import the [logging.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) file in your script
    ```bash
    source logging.sh
    ```
@@ -82,7 +82,7 @@ Instead of adding the code, create a new file and name it [logging.sh](https://g
 
 I've create a sample application that makes it easier to understand the logging mechanism.
 
-1. Download the `entrypoint.sh` script
+1. Download the [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) script
     ```bash
     TARGET_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/entrypoint.sh" && \
     wget -O entrypoint.sh "$TARGET_URL" && \
