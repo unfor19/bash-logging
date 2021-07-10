@@ -84,6 +84,7 @@ tail -1       | tr -s "[:space:]" | cut -d" " -f5
 This expression is used in the code in
 
 ```bash
+usage_msg="$(df -h "$path")"
 percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)"
 ```
 

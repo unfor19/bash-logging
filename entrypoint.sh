@@ -53,7 +53,7 @@ log_msg(){
 
 ### App -----------------------------------------------------------------------------
 get_disk_usage(){
-    local path="$1"
+    local path="${1:-"/"}"
     local usage_msg=""
     local percentage_msg=""
     local percentage=""
