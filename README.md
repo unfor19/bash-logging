@@ -32,6 +32,23 @@ To keep your script as a single file, you can copy paste the contents of [loggin
 
 ## Examples
 
+### Docker
+
+Run as a [Docker](https://www.docker.com/why-docker) container
+
+```bash
+docker run --rm -it unfor19/bash-logging:example "/" 85 92
+```
+
+```bash
+# Output
+[INF] 1625942574 Sat Jul 10 18:42:54 UTC 2021 :: Getting disk usage ...
+[INF] 1625942574 Sat Jul 10 18:42:54 UTC 2021 :: Disk usage for the path "/" is 92%
+[WRN] 1625942574 Sat Jul 10 18:42:54 UTC 2021 :: Disk usage is higher than the warning threshold of 85%
+```
+
+### From Source
+
 I've create a sample application that makes it easier to understand the logging mechanism.
 
 1. Download [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) and [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh)
