@@ -200,15 +200,19 @@ echo "$percentage_msg" # print results
 
 ### Associative Array Keys As Array
 
-Keys array of a given associative array
+To get Keys  of a given associative array, use the `!` character.
+
 ```bash 
-declare -A ASSOCIATIVE_ARRAY=([FIRST]=1 [SECOND]=2)
-echo ${!ASSOCIATIVE_ARRAY[*]}
+declare -A ASSOCIATIVE_ARRAY=([FIRST]=1 [SECOND]=2) && \
+echo ${!ASSOCIATIVE_ARRAY[*]} && \
+declare -a KEYS_ARRAY=("${!ASSOCIATIVE_ARRAY[*]}") && \
+echo "Keys Array: ${KEYS_ARRAY[@]}"
 ```
 
 ```bash
 # Output
 FIRST SECOND
+Keys Array: FIRST SECOND
 ```
 
 This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
