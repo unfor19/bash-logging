@@ -78,7 +78,13 @@ This expression is used in the code in - `${!_LOGGING_LEVELS[*]}`
 
 ```bash
 get last line | squash spaces     | split string by " " and get the Fifth Element (Milla Jovovich? Bruce Willis?)
-tail -1       | tr -s "[:space:]" | cut -d" " -f5)
+tail -1       | tr -s "[:space:]" | cut -d" " -f5
+```
+
+This expression is used in the code in
+
+```bash
+percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f5)"
 ```
 
 ### Initializing Variables
