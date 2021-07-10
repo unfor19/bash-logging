@@ -24,7 +24,7 @@ is_array_contains(){
   declare -a array=("$1")
   local string="$2"
   if [[ " ${array[*]} " =~ " $string " ]]; then
-      echo "true"
+    echo "true"
   fi
 
   echo "false"
@@ -72,7 +72,7 @@ main(){
   # Get disk usage
   log_msg "Getting disk usage ..." "INF"
   if [[ -z "$disk_usage" ]]; then
-      disk_usage="$(get_disk_usage "$path")"
+    disk_usage="$(get_disk_usage "$path")"
   fi
   log_msg "Finished getting disk usage $disk_usage with the given path $path" "DBG"
   log_msg "Warning threshold is $warning_threshold" "DBG"
@@ -80,9 +80,9 @@ main(){
 
   # Check warning threshold
   if [[ "$disk_usage" -le "$warning_threshold" ]]; then
-      log_msg "Disk usage is lower than the warning threshold of ${warning_threshold}%" "INF"
+    log_msg "Disk usage is lower than the warning threshold of ${warning_threshold}%" "INF"
   elif [[ "$disk_usage" -le 100 ]]; then
-      log_msg "Disk usage is higher than the warning threshold of ${warning_threshold}%" "WRN"
+    log_msg "Disk usage is higher than the warning threshold of ${warning_threshold}%" "WRN"
   else
       err_msg "Unknown this usage - ${disk_usage}" "4"
   fi
@@ -92,7 +92,7 @@ main(){
   # Tests
   _TEST_UNKNOWN_LEVEL="${TEST_UNKNOWN_LEVEL:-"false"}"
   if [[ "$_TEST_UNKNOWN_LEVEL" = "true" ]]; then
-      log_msg "Missing level type" "WONKA"
+    log_msg "Missing level type" "WONKA"
   fi
 }
 
