@@ -121,6 +121,11 @@ percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f
 echo "$percentage_msg" # print results
 ```
 
+```bash
+# Output - varies per machine
+6%
+```
+
 ### Associative Array Keys As Array
 
 Keys array of a given associative array
