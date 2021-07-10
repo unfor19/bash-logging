@@ -65,7 +65,6 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 <details><summary>Expand/Collpase</summary>
 
 <!-- replacer_start_tests -->
-
 ```
 -------------------------------------------------------
 [LOG] Default Values - Should pass
@@ -166,7 +165,6 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 
 [LOG] Test failed as expected
 ```
-
 <!-- replacer_end_tests -->
 
 </details>
