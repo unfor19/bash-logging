@@ -92,12 +92,12 @@ percentage_msg="$(echo "$usage_msg" | tail -1 | tr -s "[:space:]" | cut -d" " -f
 
 1. Use first argument $1 as the default value, if empty, use the var $DISK_USAGE_PATH
 
-    ```bash
-    _DISK_USAGE_PATH="${1:-"$DISK_USAGE_PATH"}"
-    ```
+   ```bash
+   _DISK_USAGE_PATH="${1:-"$DISK_USAGE_PATH"}"
+   ```
 
 1. Check if default value is set, if not, set to "/"
-   ``bash
+   ```bash
    _DISK_USAGE_PATH="${_DISK_USAGE_PATH:-"/"}"
    ```
 
