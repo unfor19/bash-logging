@@ -30,7 +30,7 @@
 
 I've create a sample application that makes it easier to understand the logging mechanism.
 
-1. Download the [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) script
+1. Download [entrypoint.sh](https://github.com/unfor19/bash-logging/blob/master/entrypoint.sh) and [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh)
     ```bash
     LOGGING_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/logging.sh" && \
     ENTRYPOINT_URL="https://raw.githubusercontent.com/unfor19/bash-logging/master/entrypoint.sh" && \
