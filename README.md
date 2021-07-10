@@ -1,5 +1,6 @@
 # bash-logging
 
+[![Publish Latest](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml/badge.svg)](https://github.com/unfor19/bash-logging/actions/workflows/publish-latest.yml)
 
 ## Usage
 
