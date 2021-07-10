@@ -25,7 +25,7 @@ Contents of [logging.sh](https://github.com/unfor19/bash-logging/blob/master/log
 <!-- loggingsh_start -->
 
 ```
-1874(tail -n +3 "loggingsh.md")
+
 ```
 
 <!-- loggingsh_end -->
