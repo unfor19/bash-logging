@@ -14,33 +14,13 @@
    source logging.sh
    ```
 
-
-<details>
-
-
-<summary>
-
-Contents of [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) - **Expand/Collapse**
-
-</summary>
-
-<!-- loggingsh_start -->
-
-```
-$(tail -n +3 logging.sh)
-```
-
-<!-- loggingsh_end -->
-
-</details>
-
-3. Set the `_LOGGING_LEVELS` according to your needs, currently there are four (4) levels, see [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh#L5)
+1. Set the `_LOGGING_LEVELS` according to your needs, currently there are four (4) levels, see [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh#L5)
    1. `DBG=0` - Logs verbose usage messages, useful for debugging the script
    2. `INF=1` - Logs application messages
    3. `WRN=2` - Logs warning messages
    4. `OFF=3` - No logs at all
 
-3. Use the functions `log_msg` and `err_msg` in your code, the [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) file contains a full example of an application that logs the current disk usage.
+1. Use the functions `log_msg` and `err_msg` in your code, the [logging.sh](https://github.com/unfor19/bash-logging/blob/master/logging.sh) file contains a full example of an application that logs the current disk usage.
    - `log_msg $MSG $LOGGING_LEVEL=INF`
    - `err_msg $MSG $EXIT_CODE=1`
 
