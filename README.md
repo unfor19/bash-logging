@@ -173,7 +173,7 @@ Here are the results of [tests.sh](https://github.com/unfor19/bash-logging/blob/
 
 ## Advanced Bash Expressions
 
-In the following section you'll documenation about the advanced Bash expressions that I used in this project.
+In the following section you'll find documenation about the advanced Bash expressions that I used in this project.
 
 ### Piping the data
 
