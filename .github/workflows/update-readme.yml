@@ -5,6 +5,8 @@ on:
     paths-ignore:
       - "README.md"
 
+# Trigger
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
